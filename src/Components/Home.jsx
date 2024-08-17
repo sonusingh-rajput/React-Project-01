@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
+import { useContext } from "react";
+import { productContex } from "../utils/Context";
+import Loder from "./Loder";
 
 
 const Home = () => {
-  return (
+  const [products] = useContext(productContex);
+    
+  return (products ?
     <>
       <Nav />
       <div className="w-full flex flex-wrap p-10 overflow-x-hidden overflow-y-auto  ">
@@ -20,7 +25,7 @@ const Home = () => {
           </p>
         </Link>
       </div>
-    </>
+    </> : <Loder />
   );
 };
 

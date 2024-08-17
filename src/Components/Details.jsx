@@ -33,10 +33,10 @@ const Details = () => {
           laptop (up to 15 inches) in the padded sleeve, your everyday
         </p>
         <div className="flex gap-5">
-          <button className="px-8 py-1 text-green-800 hover:text-green-500 rounded text-white border border-green-800">
+          <button className="px-8 py-1 text-green-800 hover:text-green-500 rounded  border border-green-800">
             Edit
           </button>
-          <button className="px-6 py-1 text-green-800 hover:text-red-400 rounded text-white border border-green-800">
+          <button className="px-6 py-1 text-green-800 hover:text-red-400 rounded border border-green-800">
             Delete
           </button>
         </div>
