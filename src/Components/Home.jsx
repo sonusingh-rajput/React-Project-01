@@ -13,7 +13,7 @@ const Home = () => {
       <div className="w-full flex flex-wrap p-10 overflow-x-hidden overflow-y-auto  ">
         {products.map((p, i) => (
           <Link key={i}
-            to="/details/1"
+            to={`/details/${p.id}`}
             className="border-sky-200 border mr-3 mb-3 w-[15vw] h-[30vh] shadow hover:scale-105 transition-all cursor-pointer p-2"
           >
             <div
@@ -26,7 +26,6 @@ const Home = () => {
             <p className="mt-3 font-semibold text-center hover:text-blue-400 text-sm overflow-hidden">
               {p.title}
             </p>
-            {console.log(p.image)}
           </Link>
         ))}
       </div>

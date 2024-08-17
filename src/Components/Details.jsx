@@ -1,37 +1,53 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import axios from "../utils/Axios";
+import { useParams } from "react-router-dom";
+import Loder from "./Loder";
 
 const Details = () => {
-  return (
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  const { title, description, image, price, category } = product;
+  const getProduct = async () => {
+    try {
+      const { data } = await axios.get(`/products/${id}`);
+      setProduct(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  return product ? (
     <div className="flex gap-10 justify-center items-center h-full w-full">
-      <img
-        className="w-[20%] h-[50%]"
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-      />
+      {console.log(product)}
+      <img className="w-[25%] h-[50%]" src={`${image}`} />
       <div className="w-[30%]">
-        <h1 className="text-2xl font-semibold mb-3 text-zinc-800">
-          Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
-        </h1>
+        <h1 className="text-2xl font-semibold mb-3 text-zinc-800">{title}</h1>
         <div className="flex items-center gap-3 mb-3">
           <div className="inline-block">
-            <p className=" flex items-center gap-2 px-3 py-1 bg-gray-800 text-white rounded font-bold">
-              3.9{" "}
+          {product.rating && (
+            <p className="flex items-center gap-2 px-3 py-1 bg-gray-800 text-white rounded font-bold">
+              {product.rating.rate}{" "}
               <span className="text-sm">
                 <FaStar />
               </span>{" "}
             </p>
+          )}
           </div>
+         {product.rating && (
           <div className="flex gap-1 items-center text-zinc-500">
-            <p className="font-semibold">610</p>
+          <p className="font-semibold">{product.rating.count}</p>
             <p className="tracking-wide">Ratings</p>
           </div>
+         )}
         </div>
-        <p className="mb-3 text-zinc-400 text-sm">Man's Clothing</p>
-        <p className="text-2xl font-semibold mb-3">$150.00</p>
-        <p className="text-sm text-zinc-700 mb-6 ">
-          Your perfect pack for everyday use and walks in the forest. Stash your
-          laptop (up to 15 inches) in the padded sleeve, your everyday
-        </p>
+        <p className="mb-3 text-zinc-400 text-sm">{category}</p>
+        <p className="text-2xl font-semibold mb-3">${price}</p>
+        <p className="text-sm text-zinc-700 mb-6 ">{description}</p>
         <div className="flex gap-5">
           <button className="px-8 py-1 text-green-800 hover:text-green-500 rounded  border border-green-800">
             Edit
@@ -42,6 +58,8 @@ const Details = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Loder />
   );
 };
 
