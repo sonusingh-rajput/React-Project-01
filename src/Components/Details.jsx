@@ -21,11 +21,10 @@ const Details = () => {
     getProduct();
   }, []);
 
-  return product ?  (
+  return product ?  
     <div className="flex gap-10 justify-center items-center h-full w-full">
-      {console.log(product)}
-      <img className="w-[25%]  object-fit" src={`${image}`} />
-      <div className="w-[30%]">
+      {image ? <img className="w-[25%]  object-fit" src={`${image}`} /> : <Loder />}
+      {title ? <div className="w-[30%]">
         <h1 className="text-2xl font-semibold mb-3 text-zinc-800">{title}</h1>
         <div className="flex items-center gap-3 mb-3">
           <div className="inline-block">
@@ -56,9 +55,9 @@ const Details = () => {
             Delete
           </button>
         </div>
-      </div>
+      </div> : <Loder />}
     </div> 
-  ) : 
+   : 
   <Loder />
 };
 
