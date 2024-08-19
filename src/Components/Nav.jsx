@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { productContex } from "../utils/Context";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Nav = () => {
 
@@ -14,8 +14,6 @@ const Nav = () => {
   const getUniqueColor = () => {
     return `rgba(${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},0.7)`
   }
-console.log(getUniqueColor())
-
   return (
     <>
       <nav className="w-[20%] bg-zinc-100 h-full flex flex-col items-center">
