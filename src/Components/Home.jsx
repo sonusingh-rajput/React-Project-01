@@ -23,14 +23,14 @@ const Home = () => {
   }
   
   useEffect(() => {
-    if(!filteredProducts) setFilteredProducts(products)
+    if(!filteredProducts || category == "undefined") setFilteredProducts(products)
       if(category != "undefined") getProductsCategory()
   },[category,products])
 
   return products ? (
     <>
       <Nav />
-      <div className="w-full flex flex-wrap p-10 overflow-x-hidden overflow-y-auto  ">
+      <div className="w-full flex flex-wrap p-16 overflow-x-hidden overflow-y-auto  ">
         {filteredProducts && filteredProducts.map((p, i) => (
           <Link key={i}
             to={`/details/${p.id}`}
