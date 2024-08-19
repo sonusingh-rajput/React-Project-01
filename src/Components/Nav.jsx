@@ -12,9 +12,9 @@ const Nav = () => {
 
   // For Unique Colored of Product Categories
   const getUniqueColor = () => {
-
+    return `rgba(${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},0.7)`
   }
-
+console.log(getUniqueColor())
 
   return (
     <>
@@ -27,8 +27,8 @@ const Nav = () => {
         <div className="w-[80%] flex flex-col gap-3">
         {differentCategory.map((cat,ind) => 
           <Link to={`/?category=${cat}`} key={ind} className="flex gap-2 items-center">
-          <span className="rounded-full w-[18px] h-[18px] bg-green-100 " />
-          {cat.toUpperCase()}
+          <span style={{backgroundColor:getUniqueColor()}} className="rounded-full w-[18px] h-[18px]" />
+          <span className="hover:text-green-700 font-semibold text-sm">{cat.toUpperCase()}</span>
         </Link>)}
           
         </div>
